@@ -7,6 +7,10 @@ var appState = observable({
     timer: 2
 });
 
+appState.resetTimer = function reset() {
+    appState.timer = 0;
+};
+
 setInterval(function tick() {
     appState.timer += 1;
 }, 1000);

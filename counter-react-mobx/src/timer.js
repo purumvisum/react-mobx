@@ -12,6 +12,7 @@ export default class TimerView extends React.Component {
     }
 
     onReset () {
+
         this.props.appState.resetTimer();
     }
 };

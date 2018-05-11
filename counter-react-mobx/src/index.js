@@ -6,7 +6,7 @@ import ReactCounter from './reactCounter';
 render(
   <div>
     <Counter/>
-    <ReactCounter/>
+    {/*<ReactCounter/>*/}
   </div>,
   document.getElementById("root")
 );

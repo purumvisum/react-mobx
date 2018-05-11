@@ -1,26 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
-import {observable} from 'mobx';
-import TimerView from './timer';
-
-var appState = observable({
-    timer: 2
-});
-
-appState.resetTimer = function reset() {
-    appState.timer = 0;
-};
-
-setInterval(function tick() {
-    appState.timer += 1;
-}, 1000);
+import Counter from './counter';
+import ReactCounter from './reactCounter';
 
 render(
   <div>
-      <h1>  sdfsadfasdf </h1>
-      <TimerView
-          appState= {appState}
-      />
+    <Counter/>
+    <ReactCounter/>
   </div>,
   document.getElementById("root")
 );

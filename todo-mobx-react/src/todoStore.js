@@ -11,6 +11,10 @@ class Store  {
         var matchesFilter = new RegExp(this.filter, 'i')
         return this.todos.filter( todo => !this.filter || matchesFilter.test(todo))
     }
+
+    createTodo (value) {
+        this.todos.push(value)
+    }
 }
 
 export default store = window.store = new Store;

@@ -1,7 +1,6 @@
-// import shortid from 'shortid';
+import shortid from 'shortid';
 import {observer} from 'mobx-react';
 import React from "react";
-import TodoView from "./todoView";
 
 @observer
 export default class TodoList extends React.Component {
@@ -11,14 +10,27 @@ export default class TodoList extends React.Component {
         let store = this.props.store;
         const filteredTodos = store.filteredTodos;
         const todoList = filteredTodos.map(item => {
-            return <li> {item} </li>
+            return <li key = {shortid.generate()}> {item} </li>
         });
         return (
             <div>
+                Search
                 <input
                     onChange = {(e) => {
-                    store.filter = e.target.value
-                }}
+                        store.filter = e.target.value
+                    }}
+                />
+                <br/>
+                Add New
+
+                <input
+                    onKeyPress = {(e) => {
+                        if (e.charCode === 13 && e.target.value.trim() !== '') {
+                            store.createTodo(e.target.value);
+                            e.target.value = ''
+                        }
+
+                    }}
                 />
                 <ul>
                     {todoList}

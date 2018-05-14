@@ -10,7 +10,15 @@ export default class TodoList extends React.Component {
         let store = this.props.store;
         const filteredTodos = store.filteredTodos;
         const todoList = filteredTodos.map(item => {
-            return <li key = {shortid.generate()}> {item} </li>
+            return <div>
+                <input
+                    type="checkbox"
+                    onClick= {() => {
+                        store.completeTodo(item.id)
+                    }}
+                    checked={item.complete}/>
+                <li key = {shortid.generate()}> {item.value} </li>
+            </div>
         });
         return (
             <div>

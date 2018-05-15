@@ -1,5 +1,7 @@
 import shortid from 'shortid';
 import {observer} from 'mobx-react';
+
+// import {asyncAction} from "mobx-utils"
 import React from "react";
 import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
@@ -11,6 +13,8 @@ export default class Weather extends React.Component {
     setLocation = (value) => {
         this.props.store.location = value
     }
+
+
 
     render() {
         const styles = {
@@ -40,13 +44,24 @@ export default class Weather extends React.Component {
                     }
                 />
                 <IconButton
+                    onClick = { ()=> {
+                        store.loadWeatherGenerator()
+                    } }
                     type="submit"
                     iconStyle={styles.mediumIcon}
                     tooltip="Submit"
                 >
                     <SearchIcon />
                 </IconButton>
-
+                <div>
+                    {
+                        JSON.stringify(store.weatherData).length > 2 &&
+                        <div>
+                            City: {store.weatherData.city}<br/>
+                            Now: {store.weatherData.current.temp} {store.weatherData.current.weather}<br/>
+                        </div>
+                    }
+                </div>
             </div>
         );
     }

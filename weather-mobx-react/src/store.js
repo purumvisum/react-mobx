@@ -1,4 +1,4 @@
-import {observable, computed, autorun} from 'mobx';
+import {mobx, observable, computed, autorun, flow} from 'mobx';
 
 // class Todo {
 //     @observable value;
@@ -14,6 +14,16 @@ import {observable, computed, autorun} from 'mobx';
 
 class Store  {
     @observable location = '';
+    @observable weatherData = {};
+
+
+    loadWeatherGenerator = flow(function*(city) {
+        const response = yield fetch(
+            `https://abnormal-weather-api.herokuapp.com/cities/search?city=Minsk`
+        );
+        const data = yield response.json();
+        this.weatherData = data;
+    });
     // @computed get filteredTodos () {
     //     let matchesFilter = new RegExp(this.filter, 'i');
     //     return this.todos.filter( todo => !this.filter || matchesFilter.test(todo.value))
@@ -40,4 +50,5 @@ autorun(() => {
     // send it to the server each time it is changed, but await at least 300 milliseconds before sending it.
     // When sent, the latest value of profile.asJson will be used.
     console.log('store.location', store.location)
+    console.log('store.weatherData', store.weatherData)
 });

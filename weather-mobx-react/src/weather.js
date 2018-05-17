@@ -6,6 +6,7 @@ import React from "react";
 import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import IconButton from 'material-ui/IconButton';
+import WeatherCard from './weatherCard';
 
 @observer
 export default class Weather extends React.Component {
@@ -53,13 +54,33 @@ export default class Weather extends React.Component {
                 >
                     <SearchIcon />
                 </IconButton>
+
                 <div>
                     {
-                        JSON.stringify(store.weatherData).length > 2 &&
+                        store.loadWeatherError &&
                         <div>
-                            City: {store.weatherData.city}<br/>
-                            Now: {store.weatherData.current.temp} {store.weatherData.current.weather}<br/>
+                            {store.loadWeatherError}
                         </div>
+                    }
+
+                    {
+                        JSON.stringify(store.weatherData).length > 2 &&
+
+                        <WeatherCard
+                            city = {store.weatherData.city}
+                            temp = {store.weatherData.current.temp}
+                            weather = {store.weatherData.current.weather}
+                            img = {store.weatherData.image_url}
+                        />
+
+                        // <div>
+                        //     City: {store.weatherData.city}<br/>
+                        //     <img
+                        //         src={store.weatherData.image_url}
+                        //         alt={store.weatherData.current.weather}
+                        //     />
+                        //     Now: {store.weatherData.current.temp} {store.weatherData.current.weather}<br/>
+                        // </div>
                     }
                 </div>
             </div>

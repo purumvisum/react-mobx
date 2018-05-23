@@ -76,7 +76,9 @@ export default class Weather extends React.Component {
 
                             <Route render={({ history}) => (
                                 <RaisedButton label="More Explicit"
-                                              onClick={() => { history.push('/explicit') }}
+                                              onClick={() => {
+                                                  history.push(`/forecast/${store.weatherData.city}`)}
+                                              }
                                 />
                             )} />
 

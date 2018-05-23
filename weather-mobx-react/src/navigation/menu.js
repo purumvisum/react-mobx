@@ -45,9 +45,8 @@ export default class Menu extends React.Component {
                             path="/about"
                             component={AboutUs} />
                         <Route
-                            exact
-                            path="/explicit"
-                            render={() => <WeekendWeather store={Store}/>} />
+                            path="/forecast/:id"
+                            render={(props) => <WeekendWeather {...props} store={Store}/>} />
                         <Route
                             component={NotMatch} />
                     </Switch>

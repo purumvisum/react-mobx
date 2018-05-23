@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Weather from '../weather/weather';
 import AboutUs from '../aboutUs';
 import NotMatch from '../notMatch';
+import WeekendWeather from '../weather/weekendWeather';
 import Store from '../store';
 
 export default class Menu extends React.Component {
@@ -43,7 +44,10 @@ export default class Menu extends React.Component {
                             exact
                             path="/about"
                             component={AboutUs} />
-
+                        <Route
+                            exact
+                            path="/explicit"
+                            render={() => <WeekendWeather store={Store}/>} />
                         <Route
                             component={NotMatch} />
                     </Switch>

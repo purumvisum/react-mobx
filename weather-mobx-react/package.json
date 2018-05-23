@@ -40,9 +40,11 @@
     "mobx-react": "^5.1.2",
     "mobx-react-devtools": "^4.2.11",
     "mobx-utils": "^4.0.1",
+    "moment": "^2.22.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-router-dom": "^4.2.2",
+    "react-weather": "^0.1.3",
     "shortid": "^2.2.8"
   }
 }

@@ -3,6 +3,10 @@ import React from "react";
 import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
+
 import WeatherCard from './weatherCard';
 
 @observer
@@ -60,13 +64,23 @@ export default class Weather extends React.Component {
 
                     {
                         JSON.stringify(store.weatherData).length > 2 &&
+                        <div>
+                            <WeatherCard
+                                city = {store.weatherData.city}
+                                temp = {store.weatherData.current.temp}
+                                weather = {store.weatherData.current.weather}
+                                img = {store.weatherData.image_url}
+                            />
 
-                        <WeatherCard
-                            city = {store.weatherData.city}
-                            temp = {store.weatherData.current.temp}
-                            weather = {store.weatherData.current.weather}
-                            img = {store.weatherData.image_url}
-                        />
+                            <br/>
+
+                            <Route render={({ history}) => (
+                                <RaisedButton label="More Explicit"
+                                              onClick={() => { history.push('/explicit') }}
+                                />
+                            )} />
+
+                        </div>
                     }
                 </div>
             </div>

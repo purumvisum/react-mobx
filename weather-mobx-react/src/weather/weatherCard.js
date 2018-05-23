@@ -1,4 +1,3 @@
-import shortid from 'shortid';
 import {observer} from 'mobx-react';
 import {
     Card,
@@ -7,9 +6,6 @@ import {
     CardTitle } from 'material-ui/Card';
 
 import React from "react";
-import TextField from 'material-ui/TextField';
-import SearchIcon from 'material-ui/svg-icons/action/search';
-import IconButton from 'material-ui/IconButton';
 
 @observer
 export default class WeatherCard extends React.Component {

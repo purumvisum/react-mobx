@@ -1,17 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
-import {autorun} from 'mobx';
 import 'babel-polyfill';
-
-import Weather from './weather';
-import Store from './store';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Menu from "./navigation/menu";
 
 render(
     <MuiThemeProvider>
-      <Weather
-          store = {Store}
-      />
+        <Menu/>
     </MuiThemeProvider>,
   document.getElementById("root")
 );

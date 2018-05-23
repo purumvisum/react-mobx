@@ -42,6 +42,7 @@
     "mobx-utils": "^4.0.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-router-dom": "^4.2.2",
     "shortid": "^2.2.8"
   }
 }

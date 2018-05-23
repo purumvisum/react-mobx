@@ -1,7 +1,4 @@
-import shortid from 'shortid';
 import {observer} from 'mobx-react';
-
-// import {asyncAction} from "mobx-utils"
 import React from "react";
 import TextField from 'material-ui/TextField';
 import SearchIcon from 'material-ui/svg-icons/action/search';
@@ -14,8 +11,6 @@ export default class Weather extends React.Component {
     setLocation = (value) => {
         this.props.store.location = value
     }
-
-
 
     render() {
         const styles = {
@@ -31,10 +26,10 @@ export default class Weather extends React.Component {
         };
 
         return (
+        <div>
             <div
                 style={styles.root}
             >
-
                 <TextField
                     floatingLabelText={'Pick the location'}
                     floatingLabelFixed
@@ -72,18 +67,11 @@ export default class Weather extends React.Component {
                             weather = {store.weatherData.current.weather}
                             img = {store.weatherData.image_url}
                         />
-
-                        // <div>
-                        //     City: {store.weatherData.city}<br/>
-                        //     <img
-                        //         src={store.weatherData.image_url}
-                        //         alt={store.weatherData.current.weather}
-                        //     />
-                        //     Now: {store.weatherData.current.temp} {store.weatherData.current.weather}<br/>
-                        // </div>
                     }
                 </div>
             </div>
+        </div>
+
         );
     }
 }
